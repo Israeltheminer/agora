@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
 			<header className='px-[3.5%] py-3 border-b border-[#eee]'>
 				<Navbar />
 			</header>
-			<main className='main-container px-[6%]'>{children}</main>
+			<main className='main-container'>{children}</main>
 			<Footer />
 		</div>
 	)

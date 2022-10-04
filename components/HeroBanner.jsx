@@ -6,14 +6,16 @@ import { BsFillCreditCardFill } from "react-icons/bs"
 
 const HeroBanner = ({ heroBanner }) => {
 	return (
-		<div className='hero-banner-container rounded-[30px] mt-12'>
+		<div className='hero-banner-container rounded-[30px] my-16'>
 			<div>
 				<h4 className='text-lg text-[#dcdcdc] opacity-70'>{heroBanner.product}</h4>
 				<h3 className='text-3xl text-[rgb(62, 62, 62)] mt-2 font-bold opacity-60'>{heroBanner.midText}</h3>
 				<div className='relative'>
-					<h1 className='text-white absolute top-0 important text-[7em] left-0 font-bold uppercase w-[600px] mt-4'>{heroBanner.largeText1}</h1>
+					<h1 className='text-white absolute top-0 important text-[7em] left-0 font-bold uppercase w-[600px] mt-4 md:text-[5em] md:w-auto sm:static sm:text-[4em]'>
+						{heroBanner.largeText1}
+					</h1>
 				</div>
-				<div className='hero-banner-image'>
+				<div className='hero-banner-image md:static md:mt-10 md:flex md:justify-end sm:mt-6 sm:w-[100%]'>
 					{urlFor(heroBanner.image) && (
 						<Image
 							src={`${urlFor(heroBanner.image)}`}
@@ -25,7 +27,7 @@ const HeroBanner = ({ heroBanner }) => {
 					)}
 				</div>
 				<Link href=''>
-					<button className='btn btn-blue shadow-md mt-40' type='button'>
+					<button className='btn btn-blue shadow-md mt-40 md:mt-0' type='button'>
 						<span className='btn__visible flex items-center justify-start gap-4'>
 							<BsFillCreditCardFill />
 							{heroBanner.buttonText}
