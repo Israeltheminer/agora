@@ -5,14 +5,14 @@ import { urlFor } from "../lib/client"
 import { BsFillCreditCardFill } from "react-icons/bs"
 
 const HeroBanner = ({ heroBanner }) => {
-	const [videoAutoPlay] = useState(true)
-	const [videoSound] = useState(false)
 	return (
 		<div className='hero-banner-container rounded-[30px] mt-12'>
 			<div>
-				<h3 className='text-xl text-[#dcdcdc] opacity-70'>{heroBanner.smallText}</h3>
-				<h4 className='text-3xl text-[rgb(62, 62, 62)] mt-2 font-semibold opacity-70'>{heroBanner.midText}</h4>
-				<h1 className='text-white text-[7em] top-[30%] left-0 font-semibold uppercase w-[600px] mt-4 video-text mix'>{heroBanner.largeText1}</h1>
+				<h4 className='text-lg text-[#dcdcdc] opacity-70'>{heroBanner.product}</h4>
+				<h3 className='text-3xl text-[rgb(62, 62, 62)] mt-2 font-bold opacity-60'>{heroBanner.midText}</h3>
+				<div className='relative'>
+					<h1 className='text-white absolute top-0 important text-[7em] left-0 font-bold uppercase w-[600px] mt-4'>{heroBanner.largeText1}</h1>
+				</div>
 				<div className='hero-banner-image'>
 					{urlFor(heroBanner.image) && (
 						<Image
@@ -25,7 +25,7 @@ const HeroBanner = ({ heroBanner }) => {
 					)}
 				</div>
 				<Link href=''>
-					<button className='btn shadow-md mt-8' type='button'>
+					<button className='btn btn-blue shadow-md mt-40' type='button'>
 						<span className='btn__visible flex items-center justify-start gap-4'>
 							<BsFillCreditCardFill />
 							{heroBanner.buttonText}
@@ -33,7 +33,7 @@ const HeroBanner = ({ heroBanner }) => {
 						<span className='flex self-center justify-center btn__invisible'>{heroBanner.saleTime}!</span>
 					</button>
 				</Link>
-				<div className='desc'>
+				<div className='desc w-[300px]'>
 					<h5 className=''>Description</h5>
 					<p>{heroBanner.description}</p>
 				</div>
