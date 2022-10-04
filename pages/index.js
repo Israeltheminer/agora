@@ -5,13 +5,18 @@ import { client } from "../lib/client.js"
 const index = ({ productData, bannerData }) => {
 	return (
 		<>
-			<div className='smooth-scroll'>
+			<div className='smooth-scroll px-[6%]'>
 				<HeroBanner heroBanner={bannerData.length && bannerData[0]} />
-				<div className='products-heading'>
-					<h2 className='text-xl'>Best Selling Products</h2>
-					<p>Speakers of many variations</p>
+				<div className='products-heading mt-20'>
+					<h2 className='text-xl'>Shoes & Sneakers</h2>
+					<p className='mt-4'>Nike | Adidas | Yeezy | Converse</p>
 				</div>
-				<div className='products-container'>{productData?.map((product) => product.name)}</div>
+				<div className='products-container grid grid-cols-3'>
+					{console.log(productData)}
+					{productData?.map((product) => (
+						<Product key={product._id} product={product} />
+					))}
+				</div>
 				<FooterBanner />
 			</div>
 		</>

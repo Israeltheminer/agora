@@ -97,29 +97,70 @@ span.text-red {
 	font-weight: 600;
 }
 .products-container {
-	display: flex;
-	flex-wrap: wrap;
 	justify-content: center;
-	gap: 15px;
-	margin-top: 20px;
+	row-gap: 50px;
+	column-gap: 40px;
+	margin-top: 40px;
 	width: 100%;
 }
-.product-card {
-	cursor: pointer;
-	transform: scale(1, 1);
-	transition: transform 0.5s ease;
-	color: #324d67;
-}
-.product-card:hover {
-	transform: scale(1.1, 1.1);
-}
 .product-image {
-	border-radius: 15px;
-	background-color: #ebebeb;
-	transform: scale(1, 1);
-	transition: transform 0.5s ease;
+	cursor: pointer;
+	color: rgb(76, 76, 76);
+	border-radius: 25px;
+	position: relative;
+	width: 350px;
+	height: 375px;
+	overflow: clip;
+}
+.product-card {
+	border-radius: 25px;
+	overflow: clip;
+	background-color: #f6f6f6;
+	box-shadow: 6px 6px 12px #cacaca, -6px -6px 12px #ffffff;
+}
+.btn {
+	font-size: 14px;
+	text-transform: uppercase;
+	position: relative;
+	overflow: hidden;
+	border: none;
+	font-weight: 500;
+	cursor: pointer;
+	z-index: 10000 !important;
+	border-radius: 8px;
+	color: white;
+	background: rgb(31, 121, 224);
+	background: linear-gradient(90deg, rgba(31, 121, 224, 1) 50%, rgba(80, 137, 226, 1) 75%, rgba(127, 166, 239, 1) 100%);
+	@apply hover:scale-[1.05] transition-all ease-in-out delay-100 duration-300;
 }
 
+.btn > * {
+	display: inline-block;
+	transition: all ease-in-out 0.5s;
+}
+.btn__visible {
+	padding: 1rem 2rem;
+	text-align: center;
+}
+.btn__invisible {
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: -50%;
+}
+
+.btn:hover {
+	background: rgb(31, 121, 224);
+	background: linear-gradient(156deg, rgba(31, 121, 224, 1) 50%, rgba(220, 220, 230, 1) 100%);
+}
+
+.btn:hover .btn__visible {
+	transform: translateY(100%);
+}
+
+.btn:hover .btn__invisible {
+	top: 35%;
+}
 .product-name {
 	font-weight: 500;
 }
@@ -130,25 +171,12 @@ span.text-red {
 }
 
 .hero-banner-container {
-	padding: 80px 100px 100px;
+	padding: 80px 50px 100px;
 	background: rgb(79, 79, 79);
 	background: linear-gradient(125deg, rgba(79, 79, 79, 1) 0%, rgba(105, 111, 112, 1) 29%, rgba(220, 220, 220, 1) 100%);
 	position: relative;
-	min-height: 500px;
+	min-height: 450px;
 	line-height: 0.9;
-	width: 100%;
-}
-
-.btn {
-	border: none;
-	margin-top: 40px;
-	font-size: 18px;
-	font-weight: 500;
-	cursor: pointer;
-	z-index: 10000 !important;
-	border-radius: 14px;
-	color: white;
-	@apply hover:scale-[1.05] transition ease-in-out delay-100;
 }
 
 .hero-banner-image {
@@ -157,7 +185,7 @@ span.text-red {
 	right: 15%;
 }
 .po {
-	color: #4f4f4f;
+	color: rgb(62, 62, 62);
 }
 .desc {
 	position: absolute;
