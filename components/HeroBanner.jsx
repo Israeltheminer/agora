@@ -11,7 +11,7 @@ const HeroBanner = ({ heroBanner }) => {
 				<h4 className='text-lg text-[#dcdcdc] opacity-70'>{heroBanner.product}</h4>
 				<h3 className='text-3xl text-[rgb(62, 62, 62)] mt-2 font-bold opacity-60'>{heroBanner.midText}</h3>
 				<div className='relative'>
-					<h1 className='text-white absolute top-0 important text-[7em] left-0 font-bold uppercase w-[600px] mt-4 md:text-[5em] md:w-auto sm:static sm:text-[4em]'>
+					<h1 className='text-white absolute top-0 important text-[7em] left-0 font-bold uppercase w-[600px] mt-4 md:text-[5em] md:w-auto sm:static sm:text-[4em] xs:text-[2.7rem]'>
 						{heroBanner.largeText1}
 					</h1>
 				</div>

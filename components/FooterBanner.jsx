@@ -10,7 +10,7 @@ const FooterBanner = ({ bottomBanner: { product, image, largeText1, buttonText, 
 			<div className='grid grid-cols-2 md:block'>
 				<div className='left relative'>
 					<p>{discount}</p>
-					<h3 className='font-bold mt-8 text-[70px] important absolute top-0 md:static md:text-right sm:text-left md:text-[60px] sm:text-[50px]'>
+					<h3 className='font-bold mt-8 text-[70px] important absolute top-0 md:static md:text-right sm:text-left md:text-[60px] sm:text-[50px] xs:text-[30px]'>
 						{largeText1}
 					</h3>
 				</div>
