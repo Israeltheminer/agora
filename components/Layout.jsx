@@ -5,15 +5,19 @@ import Footer from "./Footer"
 
 const Layout = ({ children }) => {
 	return (
-		<div>
+		<div className='relative overflow-hidden bg-[#f6f6f6]'>
 			<Head>
 				<title>Agora</title>
 			</Head>
-			<header className='px-[3.5%] py-3 border-b border-[#eee]'>
+			<header className='px-[3.5%] py-3 border-b bg-white border-[#eee]'>
 				<Navbar />
 			</header>
 			<main className='main-container'>{children}</main>
-			<Footer />
+			{/* The Value 110px below is used a false foooter to ensure the main footer is always at the lowest level on bigger screens*/}
+			<div className='min-h-[110px] flex'></div>
+			<div className='absolute bottom-0 left-[50%] translate-x-[-50%]'>
+				<Footer />
+			</div>
 		</div>
 	)
 }

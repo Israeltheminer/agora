@@ -17,8 +17,8 @@ const FooterBanner = ({ bottomBanner: { product, image, largeText1, buttonText, 
 				<div className='right text-right md:text-left md:mt-6'>
 					<p className='text-[rgb(76, 76, 76)]'>{product}</p>
 					<h3 className='font-semibold text-3xl mt-6'>{midText}</h3>
-					<div className='mt-2 relative max-w-[500px]'>
-						<p className='leading-[1.2] absolute top-0 important md:static'>{description}</p>
+					<div className='mt-2 relative'>
+						<p className='leading-[1.2] absolute top-0 right-0 max-w-[500px] important md:static'>{description}</p>
 					</div>
 					<Link href={`/product/${product}`}>
 						<button className='btn btn-white shadow-md mt-24 md:ml-auto sm:mt-16 sm:mb-6' type='button'>
