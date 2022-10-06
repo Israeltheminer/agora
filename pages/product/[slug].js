@@ -1,11 +1,13 @@
-import React from "react"
+import React, { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { urlFor, client } from "../../lib/client"
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineStar, AiFillStar, AiOutlineShoppingCart } from "react-icons/ai"
 import { TbShoppingCartPlus } from "react-icons/tb"
+import { Product } from "../../components"
 
 const ProductDetails = ({ productData, allProductsData }) => {
+	const [imageIndex, setImageIndex] = useState(0)
 	const { image, name, slug, price, details } = productData
 	return (
 		<div className='px-[5%] bg-[#f6f6f6] py-[80px] flex flex-col single-product-page mb-10'>
@@ -13,13 +15,20 @@ const ProductDetails = ({ productData, allProductsData }) => {
 				<div>
 					<div className='hover:scale-[1.01] transition ease-in-out duration-300'>
 						<div className='product-detail-image relative'>
-							{urlFor(image) && <Image src={`${urlFor(image[0])}`} alt={slug} layout='fill' objectFit='cover' />}
+							{urlFor(image) && <Image src={`${urlFor(image[imageIndex || 0])}`} alt={slug} layout='fill' objectFit='cover' />}
 						</div>
 					</div>
 					<div className='small-images-container'>
-						{image?.map((item, i) => (
-							<div className='relative w-[95px] h-[95px] small-image' key={i}>
-								<Image src={`${urlFor(item)}`} alt={i} layout='fill' objectFit='cover' />
+						{image?.map((item, itemIndex) => (
+							<div
+								className={
+									itemIndex === imageIndex
+										? "relative w-[95px] h-[95px] small-image selected-image"
+										: "relative w-[95px] h-[95px] unselected-image small-image"
+								}
+								onMouseEnter={() => setImageIndex(itemIndex)}
+								key={itemIndex}>
+								<Image src={`${urlFor(item)}`} alt={itemIndex} layout='fill' objectFit='cover' />
 							</div>
 						))}
 					</div>
@@ -60,6 +69,16 @@ const ProductDetails = ({ productData, allProductsData }) => {
 								</button>
 							</Link>
 						</div>
+					</div>
+				</div>
+			</div>
+			<div className='maylike-products-wrapper'>
+				<h2 className='text-2xl font-bold'>Popular items today</h2>
+				<div className='marquee'>
+					<div className='maylike-products-container track'>
+						{allProductsData.map((item) => (
+							<Product key={item._id} product={item} />
+						))}
 					</div>
 				</div>
 			</div>
