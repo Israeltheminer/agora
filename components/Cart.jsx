@@ -5,9 +5,26 @@ import Image from "next/image"
 import Link from "next/link"
 import { urlFor } from "../lib/client"
 import { useStateContext } from "../context/StateContext"
+import getStripe from "../lib/getStripe"
+import toast from "react-hot-toast"
 
 const Cart = ({ cartItems, totalPrice }) => {
-	const { deleteFromCart } = useStateContext()
+	const { deleteFromCart, hideCart } = useStateContext()
+	const handleCheckout = async () => {
+		const stripe = await getStripe()
+		const response = await fetch("/api/stripe", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(cartItems)
+		})
+		if (response.status === 500) return
+		const data = await response.json()
+		hideCart()
+		toast.loading("Redirecting...")
+		stripe.redirectToCheckout({ sessionId: data.id })
+	}
 	return (
 		<div className='pt-6 pb-4'>
 			<div className='font-semibold mb-4 px-4'>Cart</div>
@@ -45,7 +62,9 @@ const Cart = ({ cartItems, totalPrice }) => {
 				<span>${totalPrice}</span>
 			</div>
 			<div className='grid justify-center pt-3 bg-white'>
-				<button className='btn btn-blue flex justify-between w-[200px] items-center gap-6 py-[10px] pl-10 pr-12 rounded-lg'>
+				<button
+					className='btn btn-blue flex justify-between w-[200px] items-center gap-6 py-[10px] pl-10 pr-12 rounded-lg'
+					onClick={handleCheckout}>
 					<div className='text-[18px] '>
 						<IoBagCheckOutline />
 					</div>
