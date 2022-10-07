@@ -32,6 +32,8 @@ export const StateContext = ({ children }) => {
 						...cartItem,
 						quantity: cartItem.quantity + quantity
 					}
+				} else {
+					return cartItem
 				}
 			})
 			setCartItems(updatedCartItems)
@@ -41,15 +43,22 @@ export const StateContext = ({ children }) => {
 		}
 		toast.success(`${quantity} ${product.name} added to cart.`)
 	}
+	const deleteFromCart = (product) => {
+		const updatedCartItems = cartItems.filter((cartItem) => {
+			return cartItem._id !== product._id
+		})
+		setTotalPrice((prevPrice) => prevPrice - product.price * product.quantity)
+		setTotalQuantity((prevQuantity) => prevQuantity - product.quantity)
+		setCartItems(updatedCartItems)
+	}
 	const toogleCartVisibility = () => {
 		setShowCart((prev) => {
-			if (totalQuantity > 0) {
-				return !prev
-			}
+			return !prev
 		})
 	}
 	return (
-		<Context.Provider value={{ showCart, cartItems, totalPrice, totalQuantity, qty, increaseQty, decreaseQty, addToCart, toogleCartVisibility }}>
+		<Context.Provider
+			value={{ showCart, cartItems, totalPrice, totalQuantity, qty, increaseQty, decreaseQty, addToCart, toogleCartVisibility, deleteFromCart }}>
 			{children}
 		</Context.Provider>
 	)
