@@ -507,7 +507,6 @@ span.text-red {
 	left: 40px;
 	transition: all 0.3s;
 	font-size: 22px;
-	z-index: 100;
 }
 
 .add-to-cart:hover {
