@@ -6,7 +6,7 @@ import { BsFillCreditCardFill } from "react-icons/bs"
 
 const HeroBanner = ({ heroBanner }) => {
 	return (
-		<div className='hero-banner-container rounded-[30px] my-16'>
+		<div className='hero-banner-container rounded-[30px] my-16 z-10'>
 			<div>
 				<h4 className='text-lg text-[#dcdcdc] opacity-70'>{heroBanner.product}</h4>
 				<h3 className='text-3xl text-[rgb(62, 62, 62)] mt-2 font-bold opacity-60'>{heroBanner.midText}</h3>
