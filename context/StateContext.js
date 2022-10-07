@@ -56,9 +56,24 @@ export const StateContext = ({ children }) => {
 			return !prev
 		})
 	}
+	const hideCart = () => {
+		setShowCart((prev) => false)
+	}
 	return (
 		<Context.Provider
-			value={{ showCart, cartItems, totalPrice, totalQuantity, qty, increaseQty, decreaseQty, addToCart, toogleCartVisibility, deleteFromCart }}>
+			value={{
+				showCart,
+				cartItems,
+				totalPrice,
+				totalQuantity,
+				qty,
+				increaseQty,
+				decreaseQty,
+				addToCart,
+				toogleCartVisibility,
+				deleteFromCart,
+				hideCart
+			}}>
 			{children}
 		</Context.Provider>
 	)
