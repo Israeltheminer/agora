@@ -1,13 +1,14 @@
 import React, { useState } from "react"
-import Link from "next/link"
 import Image from "next/image"
 import { urlFor, client } from "../../lib/client"
-import { AiOutlineMinus, AiOutlinePlus, AiOutlineStar, AiFillStar, AiOutlineShoppingCart } from "react-icons/ai"
+import { AiOutlineMinus, AiOutlinePlus, AiOutlineStar, AiFillStar } from "react-icons/ai"
 import { TbShoppingCartPlus } from "react-icons/tb"
 import { Product } from "../../components"
+import { useStateContext } from "../../context/StateContext"
 
 const ProductDetails = ({ productData, allProductsData }) => {
 	const [imageIndex, setImageIndex] = useState(0)
+	const { decreaseQty, increaseQty, qty, addToCart } = useStateContext()
 	const { image, name, slug, price, details } = productData
 	return (
 		<div className='px-[5%] bg-[#f6f6f6] py-[80px] flex flex-col single-product-page mb-10'>
@@ -51,23 +52,21 @@ const ProductDetails = ({ productData, allProductsData }) => {
 					</div>
 					<div className='flex gap-8 items-center'>
 						<span className='quantity py-[8px] px-[10px]'>
-							<span className='minus cursor-pointer'>
+							<span className='minus cursor-pointer' onClick={decreaseQty}>
 								<AiOutlineMinus />
 							</span>
-							<span className='num cursor-default font-bold text-black'>9</span>
-							<span className='plus cursor-pointer'>
+							<span className='num cursor-default font-bold text-black select-none'>{qty}</span>
+							<span className='plus cursor-pointer' onClick={increaseQty}>
 								<AiOutlinePlus />
 							</span>
 						</span>
 						<div>
-							<Link href={`/`}>
-								<button className='add-to-cart btn-blue'>
-									<span className='absolute right-[40px]'>Add to Cart</span>
-									<div className='icon'>
-										<TbShoppingCartPlus />
-									</div>
-								</button>
-							</Link>
+							<button className='add-to-cart btn-blue' onClick={() => addToCart(productData, qty)}>
+								<span className='absolute right-[40px]'>Add to Cart</span>
+								<div className='icon'>
+									<TbShoppingCartPlus />
+								</div>
+							</button>
 						</div>
 					</div>
 				</div>
