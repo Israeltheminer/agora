@@ -4,8 +4,8 @@ import { FaFacebookF } from "react-icons/fa"
 
 const Footer = () => {
 	return (
-		<div className='footer-container'>
-			<p>&copy;2022 Agora, Inc. All Rights Reserved</p>
+		<div className='footer-container md:flex-col md:justify-center'>
+			<p className="xs:text-sm">&copy;2022 Agora, Inc. All Rights Reserved</p>
 			<p className='icons'>
 				<AiFillInstagram />
 				<AiOutlineTwitter />

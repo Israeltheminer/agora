@@ -475,7 +475,6 @@ span.text-red {
 	font-family: inherit;
 	padding: 0.35em;
 	padding-left: 5em;
-	font-size: 16px;
 	font-weight: 500;
 	border-radius: 8px;
 	border: none;
@@ -488,19 +487,6 @@ span.text-red {
 	padding-right: 5em;
 	min-width: 224px;
 }
-
-.add-to-cart .icon {
-	position: absolute;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 2.2em;
-	width: 2.2em;
-	left: 40px;
-	transition: all 0.3s;
-	font-size: 22px;
-}
-
 .add-to-cart:hover {
 	background: white;
 }
@@ -526,7 +512,6 @@ span.text-red {
 	text-align: center;
 	margin: 50px;
 	color: rgb(76, 76, 76);
-	font-size: 28px;
 }
 .maylike-products-container {
 	display: flex;
@@ -609,6 +594,17 @@ span.text-red {
 }
 .product-max-qty {
 	margin-top: 10px;
+}
+
+@media (max-width: 500px) {
+	.maylike-products-container .product-image {
+		max-height: 180px;
+		max-width: 180px;
+	}
+	.maylike-products-container .product-image:hover {
+		max-height: 195px;
+		max-width: 195px;
+	}
 }
 
 @tailwind utilities;

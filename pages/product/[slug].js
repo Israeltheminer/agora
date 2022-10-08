@@ -5,6 +5,7 @@ import { AiOutlineMinus, AiOutlinePlus, AiOutlineStar, AiFillStar } from "react-
 import { TbShoppingCartPlus } from "react-icons/tb"
 import { Product } from "../../components"
 import { useStateContext } from "../../context/StateContext"
+import { motion } from "framer-motion"
 
 const ProductDetails = ({ productData, allProductsData }) => {
 	const [imageIndex, setImageIndex] = useState(0)
@@ -12,20 +13,20 @@ const ProductDetails = ({ productData, allProductsData }) => {
 	const { image, name, slug, price, details } = productData
 	return (
 		<div className='px-[5%] bg-[#f6f6f6] py-[80px] flex flex-col single-product-page mb-10'>
-			<div className='product-detail-container justify-around'>
+			<div className='product-detail-container justify-around m:flex-col'>
 				<div>
 					<div className='hover:scale-[1.01] transition ease-in-out duration-300'>
-						<div className='product-detail-image relative'>
+						<div className='product-detail-image relative md:w-[350px] md:h-[350px] m:mx-auto xs:w-[300px] xs:h-[300px]'>
 							{urlFor(image) && <Image src={`${urlFor(image[imageIndex || 0])}`} alt={slug} layout='fill' objectFit='cover' />}
 						</div>
 					</div>
-					<div className='small-images-container'>
+					<div className='small-images-container md:gap-[15px] m:justify-center xs:gap-[10px]'>
 						{image?.map((item, itemIndex) => (
 							<div
 								className={
 									itemIndex === imageIndex
-										? "relative w-[95px] h-[95px] small-image selected-image"
-										: "relative w-[95px] h-[95px] unselected-image small-image"
+										? "relative w-[95px] h-[95px] md:w-[65px] md:h-[65px] xs:w-[60px] xs:h-[60px] small-image selected-image"
+										: "relative w-[95px] h-[95px] md:w-[65px] md:h-[65px] xs:w-[60px] xs:h-[60px] unselected-image small-image"
 								}
 								onMouseEnter={() => setImageIndex(itemIndex)}
 								key={itemIndex}>
@@ -35,10 +36,10 @@ const ProductDetails = ({ productData, allProductsData }) => {
 					</div>
 				</div>
 				<div className='product-detail-desc max-w-[475px] mt-12'>
-					<h1 className='text-[38px] font-bold mb-6 leading-tight'>{name}</h1>
-					<p className='mb-4 leading-normal opacity-70'>{details}</p>
+					<h1 className='text-[38px] font-bold mb-6 leading-tight xs:text-[32px] xs:mb-3'>{name}</h1>
+					<p className='mb-4 leading-normal opacity-70 xs:text-sm'>{details}</p>
 					<div className='mb-2'>
-						<p className='price font-bold text-[28px]'>${price}.00</p>
+						<p className='price font-bold text-[28px] xs:text-[24px]'>${price}.00</p>
 					</div>
 					<div className='reviews mb-4'>
 						<div className='flex gap-1 mr-2'>
@@ -50,8 +51,8 @@ const ProductDetails = ({ productData, allProductsData }) => {
 						</div>
 						<p>(20)</p>
 					</div>
-					<div className='flex gap-8 items-center'>
-						<span className='quantity py-[8px] px-[10px]'>
+					<div className='flex gap-8 items-center xs:gap-4 xs:text-sm xs:flex-col xs:justify-start'>
+						<span className='quantity py-[8px] px-[10px] xs:self-start'>
 							<span className='minus cursor-pointer' onClick={decreaseQty}>
 								<AiOutlineMinus />
 							</span>
@@ -60,10 +61,10 @@ const ProductDetails = ({ productData, allProductsData }) => {
 								<AiOutlinePlus />
 							</span>
 						</span>
-						<div>
+						<div className='xs:self-start'>
 							<button className='add-to-cart btn-blue' onClick={() => addToCart(productData, qty)}>
 								<span className='absolute right-[40px]'>Add to Cart</span>
-								<div className='icon'>
+								<div className='icon absolute flex items-center justify-center h-[2.2em] w-[2.2em] left-[40px] text-2xl'>
 									<TbShoppingCartPlus />
 								</div>
 							</button>
@@ -72,7 +73,7 @@ const ProductDetails = ({ productData, allProductsData }) => {
 				</div>
 			</div>
 			<div className='maylike-products-wrapper'>
-				<h2 className='text-2xl font-bold'>Popular items today</h2>
+				<h2 className='text-3xl font-bold xs:text-2xl'>Popular items today</h2>
 				<div className='marquee'>
 					<div className='maylike-products-container track'>
 						{allProductsData.map((item) => (
