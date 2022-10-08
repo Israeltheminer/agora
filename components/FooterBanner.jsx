@@ -6,11 +6,11 @@ import { BsFillCreditCardFill } from "react-icons/bs"
 
 const FooterBanner = ({ bottomBanner: { product, image, largeText1, buttonText, saleTime, description, midText, discount } }) => {
 	return (
-		<div className='footer-banner-container rounded-[30px] my-20 '>
+		<div className='footer-banner-container rounded-[30px] my-20 xs:px-6'>
 			<div className='grid grid-cols-2 md:block'>
 				<div className='left relative'>
-					<p>{discount}</p>
-					<h3 className='font-bold mt-8 text-[70px] important absolute top-0 md:static md:text-right sm:text-left md:text-[60px] sm:text-[50px] xs:text-[30px]'>
+					<p className='xs:text-sm'>{discount}</p>
+					<h3 className='font-bold mt-8 text-[70px] important absolute top-0 md:static md:text-right sm:text-left md:text-[60px] sm:text-[50px] xs:text-[38px] xs:mt-4'>
 						{largeText1}
 					</h3>
 				</div>
@@ -21,8 +21,8 @@ const FooterBanner = ({ bottomBanner: { product, image, largeText1, buttonText, 
 						<p className='leading-[1.2] absolute top-0 right-0 max-w-[500px] important md:static'>{description}</p>
 					</div>
 					<Link href={`/product/${product}`}>
-						<button className='btn btn-white shadow-md mt-24 md:ml-auto sm:mt-16 sm:mb-6' type='button'>
-							<span className='btn__visible flex items-center justify-start gap-4'>
+						<button className='btn btn-white shadow-md mt-24 md:ml-auto sm:mt-16 sm:mb-6 xs:text-[12px]' type='button'>
+							<span className='btn__visible flex items-center justify-start gap-4 py-4 px-8 xs:py-3 xs:px-6'>
 								<BsFillCreditCardFill />
 								{buttonText}
 							</span>

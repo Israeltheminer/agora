@@ -11,8 +11,8 @@ const index = ({ productData, heroBannerData, bottomBannerData }) => {
 				</div>
 				<div className='bg-[#f6f6f6] pt-12 pb-16 px-[6%] mt-16'>
 					<div className='products-heading'>
-						<h2 className='text-xl'>Shoes & Sneakers</h2>
-						<p className='mt-4 opacity-80'>Nike | Adidas | Yeezy | Converse</p>
+						<h2 className='text-3xl xs:text-[24px]'>Shoes & Sneakers</h2>
+						<p className='mt-4 opacity-80 xs:text-[14px]'>Nike | Adidas | Yeezy | Converse</p>
 					</div>
 					<div className='products-container grid grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1'>
 						{productData?.map((product) => (
