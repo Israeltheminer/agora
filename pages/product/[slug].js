@@ -16,7 +16,7 @@ const ProductDetails = ({ productData, allProductsData }) => {
 	const topLeftInView = useInView(topLeftRef)
 	const topRightInView = useInView(topRightRef)
 	return (
-		<div className='px-[5%] bg-[#f6f6f6] py-[80px] flex flex-col single-product-page mb-10 overflow-x-clip'>
+		<div className='px-[5%] bg-[#f6f6f6] py-[80px] flex flex-col single-product-page mb-10 overflow-x-clip xs:mb-0 xs:pb-[20px]'>
 			<div className='product-detail-container justify-around m:flex-col'>
 				<motion.div ref={topLeftRef}>
 					<motion.div
