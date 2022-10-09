@@ -5,7 +5,7 @@ import Footer from "./Footer"
 
 const Layout = ({ children }) => {
 	return (
-		<div className='relative overflow-hidden bg-[#f6f6f6]'>
+		<div className='relative overflow-x-clip bg-[#f6f6f6]'>
 			<Head>
 				<title>Agora</title>
 			</Head>
