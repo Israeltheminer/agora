@@ -21,18 +21,14 @@ const ProductDetails = ({ productData, allProductsData }) => {
 				<motion.div ref={topLeftRef}>
 					<motion.div
 						className='hover:scale-[1.01] transition ease-in-out duration-300'
-						initial={!topLeftInView ? { x: 0 } : { x: "-100vw" }}
-						animate={
-							topLeftInView
-								? {
-										x: 0,
-										transition: {
-											type: "spring",
-											stiffness: 80
-										}
-								  }
-								: { x: "-100vw" }
-						}>
+						initial={{ x: "-100vw" }}
+						animate={{
+							x: 0,
+							transition: {
+								duration: 0.5
+							}
+						}}
+						viewport={{ once: true }}>
 						<motion.div className='product-detail-image relative md:w-[350px] md:h-[350px] m:mx-auto xs:w-[300px] xs:h-[300px]'>
 							{urlFor(image) && <Image src={`${urlFor(image[imageIndex || 0])}`} alt={slug} layout='fill' objectFit='cover' />}
 						</motion.div>
