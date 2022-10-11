@@ -547,12 +547,10 @@ span.text-red {
 }
 .success-wrapper,
 .cancel-wrapper {
-	background-color: white;
 	min-height: 60vh;
 }
 .success,
 .cancel {
-	width: 1000px;
 	margin: auto;
 	margin-top: 160px;
 	background-color: #dcdcdc;
@@ -565,14 +563,13 @@ span.text-red {
 }
 
 .success .icon {
-	color: green;
-	font-size: 40px;
+	color: rgb(31, 121, 224);
+	font-size: 60px;
 }
 .success h2 {
 	text-transform: capitalize;
 	margin-top: 15px 0px;
-	font-weight: 900;
-	font-size: 40px;
+	font-weight: 700;
 	color: rgb(76, 76, 76);
 }
 .success .email-msg {

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import React from "react"
+import React, { useEffect } from "react"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { BiBookmarkHeart } from "react-icons/bi"
 import { GiHamburgerMenu } from "react-icons/gi"
@@ -8,7 +8,16 @@ import Cart from "./Cart"
 import { motion } from "framer-motion"
 
 const Navbar = () => {
-	const { cartItems, showCart, totalQuantity, totalPrice, toogleCartVisibility } = useStateContext()
+	const { cartItems, showCart, totalQuantity, totalPrice, toogleCartVisibility, setCartItems, setTotalPrice, setTotalQuantity } = useStateContext()
+	useEffect(() => {
+		const stringedCartItems = window?.localStorage?.getItem("cartItems")
+		const localStorageTotalPrice = parseInt(window?.localStorage?.getItem("totalPrice"))
+		const localStorageTotalQuantity = parseInt(window?.localStorage?.getItem("totalQuantity"))
+		const localStorageCartItems = JSON.parse(stringedCartItems)
+		localStorageCartItems?.length > 0 && setCartItems(localStorageCartItems)
+		localStorageTotalPrice && setTotalPrice(localStorageTotalPrice)
+		localStorageTotalQuantity && setTotalQuantity(localStorageTotalQuantity)
+	}, [setCartItems, setTotalPrice, setTotalQuantity])
 	return (
 		<div className='navbar-container bg-white'>
 			<p className='nav-text font-bold logo text-xl'>

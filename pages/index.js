@@ -1,9 +1,24 @@
-import React from "react"
-import { Cart, FooterBanner, HeroBanner, Layout, Product, Navbar } from "../components"
+import React, { useState, useEffect } from "react"
+import { FooterBanner, HeroBanner, Product } from "../components"
 import { client } from "../lib/client.js"
 import { motion } from "framer-motion"
+import { useStateContext } from "../context/StateContext"
+import Image from "next/image"
 
-const index = ({ productData, heroBannerData, bottomBannerData }) => {
+const Index = ({ productData, heroBannerData, bottomBannerData }) => {
+	const [data, setData] = useState([])
+	const { page, increasePage, decreasePage } = useStateContext()
+	useEffect(() => {
+		const firstDisplay = productData.filter((_, index) => index < 12)
+		setData(firstDisplay)
+	}, [productData])
+	useEffect(() => {
+		const startDisplay = 12 * page - 12
+		const finishDisplay = 12 * page - 1
+		const pageDisplay = productData.filter((_, index) => index >= startDisplay && index <= finishDisplay)
+		setData(pageDisplay)
+	}, [productData, page])
+	const totalPages = Math.ceil(productData.length / 12)
 	return (
 		<>
 			<div className=''>
@@ -29,6 +44,35 @@ const index = ({ productData, heroBannerData, bottomBannerData }) => {
 						))}
 					</div>
 				</motion.div>
+				{data.length > 12 && (
+					<div className='flex justify-center items-center pt-16 pb-4 gap-3 text-[19px] font-bold'>
+						{page > 1 && (
+							<span
+								className='h-5 hover:h-6 cursor-pointer animate-bounce'
+								onClick={() => {
+									if (page > 1) {
+										increasePage()
+										document.cookie = `page=${page - 1}`
+									}
+								}}>
+								<Image src='/assets/left.svg' width='20' height='20' alt='left' />
+							</span>
+						)}
+						<button className='opacity-70'>{page}</button>
+						{page < totalPages && (
+							<span
+								className='h-5 hover:h-6 cursor-pointer animate-bounce'
+								onClick={() => {
+									if (page < totalPages) {
+										decreasePage()
+										document.cookie = `page=${page + 1}`
+									}
+								}}>
+								<Image src='/assets/right.svg' width='20' height='20' alt='left' />
+							</span>
+						)}
+					</div>
+				)}
 				<div className='px-[6%]'>
 					<FooterBanner bottomBanner={bottomBannerData.length && bottomBannerData[0]} />
 				</div>
@@ -50,4 +94,4 @@ export async function getStaticProps() {
 	}
 }
 
-export default index
+export default Index
